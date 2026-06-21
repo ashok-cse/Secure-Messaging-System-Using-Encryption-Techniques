@@ -17,3 +17,24 @@ visual evidence required for the university report.
 
 Tip: a clean way to capture screenshots 1-3 and 5-7 is to run the full demo
 flow described in `USER_GUIDE.md`.
+
+---
+
+## Pre-generated screenshots
+
+Ready-made versions of all of the above (rendered from real application output)
+are already included in the [`screenshots/`](screenshots/) folder, so they can be
+dropped straight into the report:
+
+- `screenshot_registration.png`
+- `screenshot_login.png`
+- `screenshot_send_message.png`
+- `screenshot_encrypted_db.png`
+- `screenshot_decrypted_inbox.png`
+- `screenshot_attack.png`
+- `screenshot_integrity_failure.png`
+- `screenshot_logs.png`
+- `test_results.png`
+
+You may still re-capture them yourself from your own terminal if your course
+requires native screenshots.

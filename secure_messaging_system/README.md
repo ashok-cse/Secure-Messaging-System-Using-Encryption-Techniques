@@ -102,6 +102,27 @@ wrong-secret failure and HMAC tampering detection.
 
 ---
 
+## Screenshots
+
+Pre-generated screenshots of every feature are in the [`screenshots/`](screenshots/)
+folder:
+
+| Feature | Image |
+|---|---|
+| Registration | `screenshots/screenshot_registration.png` |
+| Login | `screenshots/screenshot_login.png` |
+| Sending an encrypted message | `screenshots/screenshot_send_message.png` |
+| Encrypted data in the database | `screenshots/screenshot_encrypted_db.png` |
+| Decrypted inbox | `screenshots/screenshot_decrypted_inbox.png` |
+| Tampering attack | `screenshots/screenshot_attack.png` |
+| Integrity check failure | `screenshots/screenshot_integrity_failure.png` |
+| Security logs | `screenshots/screenshot_logs.png` |
+| Test results (19 passed) | `screenshots/test_results.png` |
+
+![Test results](screenshots/test_results.png)
+
+---
+
 ## Security design
 
 **Password storage** — On registration a random 16-byte salt is generated and
