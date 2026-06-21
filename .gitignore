@@ -1,0 +1,19 @@
+# Build / submission artifacts (regenerable from the package folder)
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Local SQLite database (generated at runtime)
+secure_messages.db
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

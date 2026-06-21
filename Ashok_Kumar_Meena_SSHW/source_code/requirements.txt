@@ -1,0 +1,6 @@
+# Secure Messaging System - Python dependencies
+# Only the cryptography package is required at runtime (AES-GCM).
+# pytest is used for running the automated tests.
+
+cryptography>=42.0.0
+pytest>=8.0.0
