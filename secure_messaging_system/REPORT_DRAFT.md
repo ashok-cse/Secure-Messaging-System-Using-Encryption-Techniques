@@ -103,6 +103,14 @@ usernames exist, the same generic error ("Invalid username or password") is
 returned for both unknown users and wrong passwords. Every login attempt is
 logged as `LOGIN_SUCCESS` or `LOGIN_FAILURE`.
 
+**Registration:**
+
+![Registration](screenshots/screenshot_registration.png)
+
+**Login:**
+
+![Login](screenshots/screenshot_login.png)
+
 ## 6. Symmetric Encryption Module
 
 Messages are encrypted with **AES-256 in GCM mode**. For each message:
@@ -116,6 +124,15 @@ Messages are encrypted with **AES-256 in GCM mode**. For each message:
 Because keys are derived from a user-entered secret, **no key is hardcoded**, and
 the random salt means the same secret yields different keys for every message.
 
+**Sending an encrypted message** (the stored value is base64 ciphertext, not the
+plaintext):
+
+![Sending an encrypted message](screenshots/screenshot_send_message.png)
+
+**Only ciphertext (never plaintext) is stored in the database:**
+
+![Encrypted data in the database](screenshots/screenshot_encrypted_db.png)
+
 ## 7. Message Integrity Using HMAC
 
 In addition to GCM's built-in authentication tag, an explicit **HMAC-SHA256** is
@@ -128,6 +145,10 @@ HMAC does not match, the message is rejected with:
 This guarantees that changing any of the protected fields (including the
 ciphertext) is detected.
 
+**A valid message decrypts successfully in the inbox:**
+
+![Decrypted inbox](screenshots/screenshot_decrypted_inbox.png)
+
 ## 8. Attack Simulation
 
 The `attack_simulation.py` module simulates a **Man-in-the-Middle tampering
@@ -137,6 +158,14 @@ attacker modifying data in transit). When the receiver opens their inbox, the
 HMAC verification fails and the modification is detected and logged
 (`INTEGRITY_FAILURE` / `ATTACK_SIMULATION`).
 
+**Running the tampering attack:**
+
+![Tampering attack](screenshots/screenshot_attack.png)
+
+**The tampering is detected when the receiver opens the message:**
+
+![Integrity check failure](screenshots/screenshot_integrity_failure.png)
+
 ## 9. Logging System
 
 Every security-relevant event is written to the `logs` table with a timestamp,
@@ -145,6 +174,8 @@ include: `REGISTER`, `LOGIN_SUCCESS`, `LOGIN_FAILURE`, `ENCRYPT`,
 `DECRYPT_SUCCESS`, `DECRYPT_FAILURE`, `INTEGRITY_FAILURE`, `ATTACK_SIMULATION`
 and `LOGOUT`. No secrets or plaintext are ever logged. Logs are viewable from
 menu option 6.
+
+![Security logs](screenshots/screenshot_logs.png)
 
 ## 10. Testing and Results
 
@@ -166,13 +197,26 @@ Run with:
 pytest -v
 ```
 
-[PASTE TEST OUTPUT / SCREENSHOT HERE]
+All 19 tests pass:
+
+![Test results](screenshots/test_results.png)
 
 ## 11. Screenshots to Include
 
-See `screenshots_needed.md`. At minimum: registration, login, sending a message,
-the encrypted message stored in the database, decrypted inbox, the tampering
-attack, the integrity-check failure, and the security logs.
+All required screenshots are embedded in the relevant sections above and are
+also collected in the [`screenshots/`](screenshots/) folder:
+
+| # | Screenshot | File |
+|---|------------|------|
+| 1 | Registration | `screenshots/screenshot_registration.png` |
+| 2 | Login | `screenshots/screenshot_login.png` |
+| 3 | Sending a message | `screenshots/screenshot_send_message.png` |
+| 4 | Encrypted data in the database | `screenshots/screenshot_encrypted_db.png` |
+| 5 | Decrypted inbox | `screenshots/screenshot_decrypted_inbox.png` |
+| 6 | Tampering attack | `screenshots/screenshot_attack.png` |
+| 7 | Integrity check failure | `screenshots/screenshot_integrity_failure.png` |
+| 8 | Security logs | `screenshots/screenshot_logs.png` |
+| 9 | Test results | `screenshots/test_results.png` |
 
 ## 12. Security Analysis
 
