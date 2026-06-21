@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local SQLite database (generated at runtime)
+secure_messages.db
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
